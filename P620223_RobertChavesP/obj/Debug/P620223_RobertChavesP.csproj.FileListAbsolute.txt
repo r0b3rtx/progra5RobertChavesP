@@ -1,0 +1,16 @@
+D:\PROGRAMACION 5\P620223_RobertChavesP\P620223_RobertChavesP\obj\Debug\P620223_RobertChavesP.csproj.AssemblyReference.cache
+D:\PROGRAMACION 5\P620223_RobertChavesP\P620223_RobertChavesP\obj\Debug\P620223_RobertChavesP.csproj.SuggestedBindingRedirects.cache
+D:\PROGRAMACION 5\P620223_RobertChavesP\P620223_RobertChavesP\obj\Debug\P620223_RobertChavesP.Formularios.FrmLogin.resources
+D:\PROGRAMACION 5\P620223_RobertChavesP\P620223_RobertChavesP\obj\Debug\P620223_RobertChavesP.Properties.Resources.resources
+D:\PROGRAMACION 5\P620223_RobertChavesP\P620223_RobertChavesP\obj\Debug\P620223_RobertChavesP.csproj.GenerateResource.cache
+D:\PROGRAMACION 5\P620223_RobertChavesP\P620223_RobertChavesP\obj\Debug\P620223_RobertChavesP.csproj.CoreCompileInputs.cache
+D:\PROGRAMACION 5\P620223_RobertChavesP\P620223_RobertChavesP\bin\Debug\P620223_RobertChavesP.exe.config
+D:\PROGRAMACION 5\P620223_RobertChavesP\P620223_RobertChavesP\bin\Debug\P620223_RobertChavesP.exe
+D:\PROGRAMACION 5\P620223_RobertChavesP\P620223_RobertChavesP\bin\Debug\P620223_RobertChavesP.pdb
+D:\PROGRAMACION 5\P620223_RobertChavesP\P620223_RobertChavesP\bin\Debug\Logica.dll
+D:\PROGRAMACION 5\P620223_RobertChavesP\P620223_RobertChavesP\bin\Debug\Logica.pdb
+D:\PROGRAMACION 5\P620223_RobertChavesP\P620223_RobertChavesP\obj\Debug\P620223_RobertChavesP.csproj.CopyComplete
+D:\PROGRAMACION 5\P620223_RobertChavesP\P620223_RobertChavesP\obj\Debug\P620223_RobertChavesP.exe
+D:\PROGRAMACION 5\P620223_RobertChavesP\P620223_RobertChavesP\obj\Debug\P620223_RobertChavesP.pdb
+D:\PROGRAMACION 5\P620223_RobertChavesP\P620223_RobertChavesP\obj\Debug\P620223_RobertChavesP.Formularios.FrmPrincipalMDI.resources
+D:\PROGRAMACION 5\P620223_RobertChavesP\P620223_RobertChavesP\obj\Debug\P620223_RobertChavesP.Formularios.FrmUsuariosGestion.resources

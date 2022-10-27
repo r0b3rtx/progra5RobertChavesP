@@ -1,0 +1,15 @@
+D:\PROGRAMACION 5\P620223_RobertChavesP\Logica\obj\Debug\Logica.csproj.AssemblyReference.cache
+D:\PROGRAMACION 5\P620223_RobertChavesP\Logica\obj\Debug\Logica.csproj.CoreCompileInputs.cache
+D:\PROGRAMACION 5\P620223_RobertChavesP\Logica\bin\Debug\Logica.dll
+D:\PROGRAMACION 5\P620223_RobertChavesP\Logica\bin\Debug\Logica.pdb
+D:\PROGRAMACION 5\P620223_RobertChavesP\Logica\obj\Debug\Logica.dll
+D:\PROGRAMACION 5\P620223_RobertChavesP\Logica\obj\Debug\Logica.pdb
+D:\PROGRAMACION 5\P620223_RobertChavesP\Logica\bin\Debug\System.Configuration.ConfigurationManager.dll
+D:\PROGRAMACION 5\P620223_RobertChavesP\Logica\bin\Debug\System.Security.AccessControl.dll
+D:\PROGRAMACION 5\P620223_RobertChavesP\Logica\bin\Debug\System.Security.Permissions.dll
+D:\PROGRAMACION 5\P620223_RobertChavesP\Logica\bin\Debug\System.Security.Principal.Windows.dll
+D:\PROGRAMACION 5\P620223_RobertChavesP\Logica\bin\Debug\System.Configuration.ConfigurationManager.xml
+D:\PROGRAMACION 5\P620223_RobertChavesP\Logica\bin\Debug\System.Security.AccessControl.xml
+D:\PROGRAMACION 5\P620223_RobertChavesP\Logica\bin\Debug\System.Security.Permissions.xml
+D:\PROGRAMACION 5\P620223_RobertChavesP\Logica\bin\Debug\System.Security.Principal.Windows.xml
+D:\PROGRAMACION 5\P620223_RobertChavesP\Logica\obj\Debug\Logica.csproj.CopyComplete
