@@ -156,25 +156,22 @@ namespace Logica.Models
         }
 
 
-        public DataTable ListarActivos(bool VerActivos = true)
+        public DataTable Listar(bool VerActivos = true, string FiltroBusqueda = "")
         {
             DataTable R = new DataTable();
 
             //TODO: Usar SP con parametro para ver proveedores elimiandos o activos
+            Conexion MiCnn = new Conexion();
 
+            MiCnn.ListaParametros.Add(new SqlParameter("@VerActivos", VerActivos));
+            MiCnn.ListaParametros.Add(new SqlParameter("@FiltroBusqueda", FiltroBusqueda));
 
-            return R;
-        }
-
-        public DataTable ListarInactivos(bool VerActivos = false)
-        {
-            DataTable R = new DataTable();
-
-            //TODO: Usar SP con parametro para ver proveedores elimiandos o activos
-
+            R = MiCnn.EjecutarSelect("SPUsuarioListar");
 
             return R;
         }
+
+       
 
         public bool ValidarLogin(string NombreUsuario, string Contrasenia)
         {
