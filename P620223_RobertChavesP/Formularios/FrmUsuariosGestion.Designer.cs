@@ -193,6 +193,7 @@
             this.txtEmail.Name = "txtEmail";
             this.txtEmail.Size = new System.Drawing.Size(313, 20);
             this.txtEmail.TabIndex = 16;
+            this.txtEmail.Leave += new System.EventHandler(this.txtEmail_Leave);
             // 
             // label7
             // 
@@ -206,10 +207,13 @@
             // 
             // txtContrasenia
             // 
+            this.txtContrasenia.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.txtContrasenia.Location = new System.Drawing.Point(102, 49);
             this.txtContrasenia.Name = "txtContrasenia";
             this.txtContrasenia.Size = new System.Drawing.Size(277, 20);
             this.txtContrasenia.TabIndex = 18;
+            this.txtContrasenia.Leave += new System.EventHandler(this.txtContrasenia_Leave);
             // 
             // label6
             // 
@@ -232,6 +236,8 @@
             // 
             // txtNombreUsuario
             // 
+            this.txtNombreUsuario.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.txtNombreUsuario.Location = new System.Drawing.Point(120, 49);
             this.txtNombreUsuario.Name = "txtNombreUsuario";
             this.txtNombreUsuario.Size = new System.Drawing.Size(297, 20);
@@ -540,7 +546,7 @@
             // CEmail
             // 
             this.CEmail.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
-            this.CEmail.DataPropertyName = "Correo";
+            this.CEmail.DataPropertyName = "Email";
             this.CEmail.HeaderText = "Correo";
             this.CEmail.Name = "CEmail";
             this.CEmail.ReadOnly = true;

@@ -5,6 +5,12 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
+//librerias importadas para la tarea
+//validaciones correo contrasenia
+
+// uso de regex fuente----https://learn.microsoft.com/en-us/dotnet/api/system.text.regularexpressions.regex?view=net-7.0
+using System.Text.RegularExpressions;
+
 namespace P620223_RobertChavesP
 {
     public static class Validaciones
@@ -113,6 +119,45 @@ namespace P620223_RobertChavesP
             h = pDate.ToLongTimeString();
 
             return h;
+        }
+
+        //tarea
+        //validar correo
+        public static bool validarFormatoCorreo(string email){
+            bool R = false;
+
+            string patronCorreoRequerido = @"[a-zA-Z0-9\._-]{2,25}.[@].[a-z]{2,12}.(com|org|net|co\.in|ac\.cr|ch)$";
+
+            Regex validarEmail = new Regex(patronCorreoRequerido);
+
+            R = validarEmail.IsMatch(email);
+
+            if (!R)
+            {
+                MessageBox.Show("Error el correo no cuenta con las caracteristicas correctas", "Error de validacion", MessageBoxButtons.OK);
+            }
+
+            return R;
+        }
+
+        //validar contrasenia
+        public static bool validarFormatoContrasenia(string contrasenia){
+            bool R = false;
+
+            if (contrasenia.Length > 7){
+                string patronContraseniaRequerido = @"[a-z A-Z 0-9][/ * ! : ; > % $ & } ) ( { # @ < - + = _ ~]";
+
+                Regex validarContrasenia = new Regex(patronContraseniaRequerido);
+
+                R = validarContrasenia.IsMatch(contrasenia);
+            }
+
+            if (!R)
+            {
+                MessageBox.Show("Error la contrasenia se forma de 8 caracteres, mayusculas, minusculas, numeros y caracteres especiales", "Error de validacion", MessageBoxButtons.OK);
+            }
+
+            return R;
         }
 
     }

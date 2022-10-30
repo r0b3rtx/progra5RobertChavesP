@@ -43,7 +43,7 @@ namespace P620223_RobertChavesP.Formularios
 
             ListaUsuarios = new DataTable();
 
-            ListaUsuarios = MiUsuarioLocal.Listar(cbVerActivo.Checked, txtBuscar.Text.Trim());
+            ListaUsuarios = MiUsuarioLocal.Listar(cbVerActivos.Checked, txtBuscar.Text.Trim());
 
             DgvLista.DataSource = ListaUsuarios;
         }
@@ -128,6 +128,9 @@ namespace P620223_RobertChavesP.Formularios
                 bool consultaPorNombreUsuario;
                 bool consultaPorEmail;
 
+                //tarea validar email y contrasenia
+                bool validarEmail, validarContrasenia;
+
                 //se crea una nueva instancia del usuario local y se agregan los valores
                 //de los atributos
                 MiUsuarioLocal = new Logica.Models.Usuario();
@@ -145,7 +148,15 @@ namespace P620223_RobertChavesP.Formularios
                 consultaPorNombreUsuario = MiUsuarioLocal.ConsultarPorNombreUsuario();
                 consultaPorEmail = MiUsuarioLocal.ConsultarPorEmail();
 
-                if (!consultaPorCedula && !consultaPorNombreUsuario && !consultaPorEmail)
+                // tarea
+                // el correo si cumple requirimientos retorna con un BOOLEANO TRUE
+                validarEmail= Validaciones.validarFormatoCorreo(MiUsuarioLocal.Email);
+
+                // la contrasenia si cumple requerimientos retorna con un BOOLEANO TRUE
+                validarContrasenia = Validaciones.validarFormatoContrasenia(MiUsuarioLocal.Contrasenia);
+
+
+                if (!consultaPorCedula && !consultaPorNombreUsuario && !consultaPorEmail && validarEmail && validarContrasenia)
                 {
                     string sms = string.Format("Esta seguro de agregar al usuario: {0}?", MiUsuarioLocal.Nombre);
 
@@ -183,6 +194,17 @@ namespace P620223_RobertChavesP.Formularios
                     if (consultaPorEmail)
                     {
                         MessageBox.Show("Error ya existe un usuario con el email digitado", "Error de validacion", MessageBoxButtons.OK);
+                    }
+
+                    if (!validarEmail)
+                    {
+                        MessageBox.Show("Error en el correo", "Error de validacion", MessageBoxButtons.OK);
+
+                    }
+
+                    if (!validarContrasenia)
+                    {
+                        MessageBox.Show("Error en la contrasenia", "Error de validacion", MessageBoxButtons.OK);
                     }
                 }
             }
@@ -304,6 +326,16 @@ namespace P620223_RobertChavesP.Formularios
                 {
                     LlenarListaUsuarios();
                 }
+        }
+
+        private void txtEmail_Leave(object sender, EventArgs e)
+        {
+            Validaciones.validarFormatoCorreo(txtEmail.Text);
+        }
+
+        private void txtContrasenia_Leave(object sender, EventArgs e)
+        {
+            Validaciones.validarFormatoContrasenia(txtContrasenia.Text);
         }
     }
 }
