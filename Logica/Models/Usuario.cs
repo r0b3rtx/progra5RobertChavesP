@@ -66,29 +66,91 @@ namespace Logica.Models
         {
             bool R = false;
 
-            //TODO: ejecutar un SP que contenga la instruccion
-            //UPDATE correspondiente y retornar TRUE si
-            //todo sale bien
+            Conexion MiConn = new Conexion();
+
+            // lista parametros para el INSERT
+            MiConn.ListaParametros.Add(new SqlParameter("@Nombre", this.Nombre));
+            MiConn.ListaParametros.Add(new SqlParameter("@Cedula", this.Cedula));
+            MiConn.ListaParametros.Add(new SqlParameter("@NombreUsuario", this.NombreUsuario));
+
+            //TODO: se debe encriptar la contrasenia que se va a almacenar en la tabla usuario
+            MiConn.ListaParametros.Add(new SqlParameter("@Contrasenia", this.Contrasenia));
+            MiConn.ListaParametros.Add(new SqlParameter("@Email", this.Email));
+
+            //parametros  para los FKs, normalmente son de objetos compuestos de la clase
+            MiConn.ListaParametros.Add(new SqlParameter("@IDRol", this.MiRol.IDUsuario));
+            MiConn.ListaParametros.Add(new SqlParameter("@IDEmpresa", this.MiEmpresa.IDEmpresa));
+
+            MiConn.ListaParametros.Add(new SqlParameter("@ID", this.IDUsuario));
+
+            int Resultado = MiConn.EjecutarUpdateDeleteInsert("SPUsuarioModificar");
+
+            if (Resultado > 0)
+            {
+                R = true;
+            }
 
             return R;
         }
 
         public bool Eliminar()
         {
-            //en las eliminaciones logicas, lo que haremos sera cambiar el valor del
-            //campo Activo a 0 (false)
-            //todo sale bien
-
             bool R = false;
 
-            //TODO: ejecutar un SP que contenga la instruccion
-            //UPDATE correspondiente y retornar TRUE si
-            //todo sale bien
+            Conexion MiConn = new Conexion();
+
+            MiConn.ListaParametros.Add(new SqlParameter("@ID", this.IDUsuario));
+
+            int Resultado = MiConn.EjecutarUpdateDeleteInsert("SPUsuarioEliminar");
+
+            if (Resultado > 0)
+            {
+                R = true;
+            }
 
             return R;
         }
 
-        public Usuario ConsultarPorID()
+        public bool Activar()
+        {
+            bool R = false;
+
+            Conexion MiConn = new Conexion();
+
+            MiConn.ListaParametros.Add(new SqlParameter("@ID", this.IDUsuario));
+
+            int Resultado = MiConn.EjecutarUpdateDeleteInsert("SPUsuarioActivar");
+
+            if (Resultado > 0)
+            {
+                R = true;
+            }
+
+            return R;
+        }
+
+        public bool ConsultarPorID(int pIDUsuario)
+        {
+            bool R = false;
+
+            Conexion MiCnn = new Conexion();
+
+            MiCnn.ListaParametros.Add(new SqlParameter("@ID", pIDUsuario));
+
+            DataTable DataUsuario = new DataTable();
+
+            DataUsuario = MiCnn.EjecutarSelect("SPUsuarioConsultarPorID");
+
+            if(DataUsuario != null && DataUsuario.Rows.Count > 0)
+            {
+                R = true;
+            }
+
+            return R;
+        }
+
+        
+        public Usuario ConsultarPorIDD()
         {
             Usuario R = new Usuario();
 
@@ -96,8 +158,36 @@ namespace Logica.Models
             // por lo tanto hay que llenar los atributos con los datos
             //que entrega un SP Select
 
+            Conexion MiCnn = new Conexion();
+
+            MiCnn.ListaParametros.Add(new SqlParameter("@ID", this.IDUsuario));
+
+            DataTable DataUsuario = new DataTable();
+
+            DataUsuario = MiCnn.EjecutarSelect("SPUsuarioConsultarPorID");
+
+            //una vez tenemos un datable con la data procedemos a llenar 
+            //propiedades del objeto de reterno
+
+            if(DataUsuario != null && DataUsuario.Rows.Count > 0)
+            {
+                DataRow Fila = DataUsuario.Rows[0];
+
+                R.IDUsuario = Convert.ToInt32(Fila["IDUsuario"]);
+                R.Nombre = Convert.ToString(Fila["Nombre"]);
+                R.Cedula = Convert.ToString(Fila["Cedula"]);
+                R.NombreUsuario = Convert.ToString(Fila["NombreUsuario"]);
+                R.Email = Convert.ToString(Fila["Email"]);
+                R.Contrasenia = string.Empty;
+                R.MiRol.IDUsuario = Convert.ToInt32(Fila["IDUsuarioRol"]);
+                R.MiEmpresa.IDEmpresa = Convert.ToInt32(Fila["IDEmpresa"]);
+                R.Activo = Convert.ToBoolean(Fila["Activo"]);
+            }
+
             return R;
         }
+        
+
 
         public bool ConsultarPorCedula()
         {
