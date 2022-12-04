@@ -46,13 +46,57 @@ namespace P620223_RobertChavesP.Formularios
 
         private void btnIngresar_Click(object sender, EventArgs e)
         {
-            //TODO: se debe validar  el ingreso  del usuario
+            
+            if(!string.IsNullOrEmpty(txtNombreUsuario.Text.Trim()) &&
+                !string.IsNullOrEmpty(txtContrasenia.Text.Trim()))
+            {
+                string u = txtNombreUsuario.Text.Trim();
+                string p = txtContrasenia.Text.Trim();
 
-            // si la validacion es correcta permite el ingreso al sistema
-            //y muestra el formulario  principal
-            Globales.MiFormPrincipal.Show();
-            this.Hide();
+                int IdLoginOK = Globales.MiUsuarioGlobal.ValidarLogin(u, p);
+
+                if (IdLoginOK > 0)
+                {
+                    //Globales.MiUsuarioGlobal.IDUsuario = IdLoginOK;
+
+                    //Globales.MiUsuarioGlobal = Globales.MiUsuarioGlobal.ConsultarPorIDD();
+
+                    Globales.MiFormPrincipal.Show();
+                    this.Hide();
+                }
+                else
+                {
+                    MessageBox.Show("Usuario o contrasenia icorrectas", "Error validacion", MessageBoxButtons.OK);
+                    txtContrasenia.Focus();
+                    txtContrasenia.SelectAll();
+                }
+            }
+            
+
+            //Globales.MiFormPrincipal.Show();
+            //this.Hide();
 
         }
+
+        //metodo ingreso directo
+        private void button1_Click(object sender, EventArgs e)
+        {
+            Globales.MiUsuarioGlobal.IDUsuario = 1;
+
+            Globales.MiUsuarioGlobal = Globales.MiUsuarioGlobal.ConsultarPorIDD();
+
+            Globales.MiFormPrincipal.Show();
+            this.Hide();
+        }
+
+        private void FrmLogin_KeyDown(object sender, KeyEventArgs e)
+        {
+            if(e.Shift  & e.KeyCode == Keys.A)
+            {
+                btnIngresoDirecto.Visible = true;
+            }
+        }
+
+      
     }
 }

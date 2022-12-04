@@ -42,7 +42,7 @@ namespace Logica.Models
 
         public decimal TotalizarLinea()
         {
-            decimal R = 0;
+            //decimal R = 0;
 
             //totalizar subtotal
             Subtotal = Cantidad * PrecioVenta;

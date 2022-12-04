@@ -18,7 +18,9 @@ namespace Logica.Models
         {
             DataTable R = new DataTable();
 
-            //TODO: hay que programar la llamada al SP que retorna datos
+            Conexion MiCnn = new Conexion();
+
+            R = MiCnn.EjecutarSelect("SPFacturaTipoListar");
 
             return R;
         }

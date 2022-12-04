@@ -116,6 +116,9 @@ namespace Logica.Models
         {
             DataTable R = new DataTable();
 
+            Conexion MyCnn = new Conexion();
+
+            R = MyCnn.EjecutarSelect("SPInventarioListar");
 
             return R;
         }

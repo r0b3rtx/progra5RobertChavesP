@@ -23,8 +23,10 @@ namespace P620223_RobertChavesP
         public static Form MiFormPrincipal = new Formularios.FrmPrincipalMDI();
 
         public static Formularios.FrmUsuariosGestion MiFormMantUsuarios = new Formularios.FrmUsuariosGestion();
-        
 
+        public static Logica.Models.Usuario MiUsuarioGlobal = new Logica.Models.Usuario();
+
+        public static Formularios.FrmFacturacion MiFormFacturacion = new Formularios.FrmFacturacion();
 
     }
 }

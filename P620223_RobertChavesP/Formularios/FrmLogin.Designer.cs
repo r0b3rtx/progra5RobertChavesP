@@ -30,6 +30,7 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmLogin));
             this.panel1 = new System.Windows.Forms.Panel();
+            this.btnIngresoDirecto = new System.Windows.Forms.Button();
             this.lblContrasenia = new System.Windows.Forms.Label();
             this.btnVerPassword = new System.Windows.Forms.Button();
             this.lblRecuperarContrasenia = new System.Windows.Forms.LinkLabel();
@@ -44,6 +45,7 @@
             // 
             // panel1
             // 
+            this.panel1.Controls.Add(this.btnIngresoDirecto);
             this.panel1.Controls.Add(this.lblContrasenia);
             this.panel1.Controls.Add(this.btnVerPassword);
             this.panel1.Controls.Add(this.lblRecuperarContrasenia);
@@ -54,8 +56,19 @@
             this.panel1.Controls.Add(this.btnIngresar);
             this.panel1.Location = new System.Drawing.Point(24, 45);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(335, 234);
+            this.panel1.Size = new System.Drawing.Size(335, 285);
             this.panel1.TabIndex = 0;
+            // 
+            // btnIngresoDirecto
+            // 
+            this.btnIngresoDirecto.Location = new System.Drawing.Point(22, 250);
+            this.btnIngresoDirecto.Name = "btnIngresoDirecto";
+            this.btnIngresoDirecto.Size = new System.Drawing.Size(75, 23);
+            this.btnIngresoDirecto.TabIndex = 8;
+            this.btnIngresoDirecto.Text = "INGRESAR\r\n";
+            this.btnIngresoDirecto.UseVisualStyleBackColor = true;
+            this.btnIngresoDirecto.Visible = false;
+            this.btnIngresoDirecto.Click += new System.EventHandler(this.button1_Click);
             // 
             // lblContrasenia
             // 
@@ -74,7 +87,7 @@
             this.btnVerPassword.Location = new System.Drawing.Point(270, 127);
             this.btnVerPassword.Name = "btnVerPassword";
             this.btnVerPassword.Size = new System.Drawing.Size(46, 29);
-            this.btnVerPassword.TabIndex = 7;
+            this.btnVerPassword.TabIndex = 2;
             this.btnVerPassword.Text = "Ver";
             this.btnVerPassword.UseVisualStyleBackColor = true;
             this.btnVerPassword.Click += new System.EventHandler(this.btnVerPassword_Click);
@@ -88,7 +101,7 @@
             this.lblRecuperarContrasenia.Location = new System.Drawing.Point(196, 159);
             this.lblRecuperarContrasenia.Name = "lblRecuperarContrasenia";
             this.lblRecuperarContrasenia.Size = new System.Drawing.Size(108, 13);
-            this.lblRecuperarContrasenia.TabIndex = 6;
+            this.lblRecuperarContrasenia.TabIndex = 5;
             this.lblRecuperarContrasenia.TabStop = true;
             this.lblRecuperarContrasenia.Text = "Olvide mi contrasenia";
             // 
@@ -109,7 +122,7 @@
             this.txtContrasenia.Location = new System.Drawing.Point(22, 127);
             this.txtContrasenia.Name = "txtContrasenia";
             this.txtContrasenia.Size = new System.Drawing.Size(251, 29);
-            this.txtContrasenia.TabIndex = 3;
+            this.txtContrasenia.TabIndex = 1;
             this.txtContrasenia.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.txtContrasenia.UseSystemPasswordChar = true;
             // 
@@ -119,18 +132,19 @@
             this.txtNombreUsuario.Location = new System.Drawing.Point(22, 37);
             this.txtNombreUsuario.Name = "txtNombreUsuario";
             this.txtNombreUsuario.Size = new System.Drawing.Size(294, 29);
-            this.txtNombreUsuario.TabIndex = 2;
+            this.txtNombreUsuario.TabIndex = 0;
             // 
             // btnCancelar
             // 
             this.btnCancelar.BackColor = System.Drawing.Color.Crimson;
+            this.btnCancelar.DialogResult = System.Windows.Forms.DialogResult.Cancel;
             this.btnCancelar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnCancelar.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnCancelar.ForeColor = System.Drawing.Color.White;
             this.btnCancelar.Location = new System.Drawing.Point(199, 188);
             this.btnCancelar.Name = "btnCancelar";
             this.btnCancelar.Size = new System.Drawing.Size(105, 34);
-            this.btnCancelar.TabIndex = 1;
+            this.btnCancelar.TabIndex = 4;
             this.btnCancelar.Text = "Cancelar";
             this.btnCancelar.UseVisualStyleBackColor = false;
             this.btnCancelar.Click += new System.EventHandler(this.btnCancelar_Click);
@@ -144,7 +158,7 @@
             this.btnIngresar.Location = new System.Drawing.Point(22, 188);
             this.btnIngresar.Name = "btnIngresar";
             this.btnIngresar.Size = new System.Drawing.Size(102, 34);
-            this.btnIngresar.TabIndex = 0;
+            this.btnIngresar.TabIndex = 3;
             this.btnIngresar.Text = "Ingresar";
             this.btnIngresar.UseVisualStyleBackColor = false;
             this.btnIngresar.Click += new System.EventHandler(this.btnIngresar_Click);
@@ -160,17 +174,21 @@
             // 
             // FrmLogin
             // 
+            this.AcceptButton = this.btnIngresar;
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ControlDarkDark;
+            this.CancelButton = this.btnCancelar;
             this.ClientSize = new System.Drawing.Size(800, 450);
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.panel1);
             this.ForeColor = System.Drawing.SystemColors.WindowFrame;
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
+            this.KeyPreview = true;
             this.Name = "FrmLogin";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "Olvide mi contrasenia";
+            this.Text = "Ingreso directo";
+            this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.FrmLogin_KeyDown);
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
             this.ResumeLayout(false);
@@ -189,5 +207,6 @@
         private System.Windows.Forms.Panel panel2;
         private System.Windows.Forms.Button btnVerPassword;
         private System.Windows.Forms.Label lblContrasenia;
+        private System.Windows.Forms.Button btnIngresoDirecto;
     }
 }

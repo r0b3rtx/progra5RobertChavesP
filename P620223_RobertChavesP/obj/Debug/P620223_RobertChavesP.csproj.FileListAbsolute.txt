@@ -14,3 +14,6 @@ D:\PROGRAMACION 5\P620223_RobertChavesP\P620223_RobertChavesP\obj\Debug\P620223_
 D:\PROGRAMACION 5\P620223_RobertChavesP\P620223_RobertChavesP\obj\Debug\P620223_RobertChavesP.pdb
 D:\PROGRAMACION 5\P620223_RobertChavesP\P620223_RobertChavesP\obj\Debug\P620223_RobertChavesP.Formularios.FrmPrincipalMDI.resources
 D:\PROGRAMACION 5\P620223_RobertChavesP\P620223_RobertChavesP\obj\Debug\P620223_RobertChavesP.Formularios.FrmUsuariosGestion.resources
+D:\PROGRAMACION 5\P620223_RobertChavesP\P620223_RobertChavesP\obj\Debug\P620223_RobertChavesP.Formularios.FrmClienteBuscar.resources
+D:\PROGRAMACION 5\P620223_RobertChavesP\P620223_RobertChavesP\obj\Debug\P620223_RobertChavesP.Formularios.FrmFacturacion.resources
+D:\PROGRAMACION 5\P620223_RobertChavesP\P620223_RobertChavesP\obj\Debug\P620223_RobertChavesP.Formularios.FrmInventarioBuscar.resources

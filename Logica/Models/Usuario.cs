@@ -47,7 +47,10 @@ namespace Logica.Models
             MiConn.ListaParametros.Add(new SqlParameter("@NombreUsuario", this.NombreUsuario));
 
             //TODO: se debe encriptar la contrasenia que se va a almacenar en la tabla usuario
-            MiConn.ListaParametros.Add(new SqlParameter("@Contrasenia", this.Contrasenia));
+            Crypto MiEncriptador = new Crypto();
+            string ContraseniaEncriptada = MiEncriptador.EncriptarEnUnSentido(this.Contrasenia);
+
+            MiConn.ListaParametros.Add(new SqlParameter("@Contrasenia", ContraseniaEncriptada));
             MiConn.ListaParametros.Add(new SqlParameter("@Email", this.Email));
 
             //parametros  para los FKs, normalmente son de objetos compuestos de la clase
@@ -73,8 +76,14 @@ namespace Logica.Models
             MiConn.ListaParametros.Add(new SqlParameter("@Cedula", this.Cedula));
             MiConn.ListaParametros.Add(new SqlParameter("@NombreUsuario", this.NombreUsuario));
 
+
             //TODO: se debe encriptar la contrasenia que se va a almacenar en la tabla usuario
-            MiConn.ListaParametros.Add(new SqlParameter("@Contrasenia", this.Contrasenia));
+
+
+            Crypto MiEncriptador = new Crypto();
+            string ContraseniaEncriptada = MiEncriptador.EncriptarEnUnSentido(this.Contrasenia);
+
+            MiConn.ListaParametros.Add(new SqlParameter("@Contrasenia", ContraseniaEncriptada));
             MiConn.ListaParametros.Add(new SqlParameter("@Email", this.Email));
 
             //parametros  para los FKs, normalmente son de objetos compuestos de la clase
@@ -179,7 +188,11 @@ namespace Logica.Models
                 R.NombreUsuario = Convert.ToString(Fila["NombreUsuario"]);
                 R.Email = Convert.ToString(Fila["Email"]);
                 R.Contrasenia = string.Empty;
+
                 R.MiRol.IDUsuario = Convert.ToInt32(Fila["IDUsuarioRol"]);
+
+                R.MiRol.Rol = Convert.ToString(Fila["Rol"]);
+
                 R.MiEmpresa.IDEmpresa = Convert.ToInt32(Fila["IDEmpresa"]);
                 R.Activo = Convert.ToBoolean(Fila["Activo"]);
             }
@@ -263,13 +276,26 @@ namespace Logica.Models
 
        
 
-        public bool ValidarLogin(string NombreUsuario, string Contrasenia)
+        public int ValidarLogin(string pNombreUsuario, string pContrasenia)
         {
-            bool R = false;
+            int R = 0;
 
-            //TODO: ejecutar un SP que contenga la instruccion
-            //UPDATE correspondiente y retornar TRUE si
-            //todo sale bien
+            Conexion MiCnn = new Conexion();
+
+            Crypto MiEncritador = new Crypto();
+            string Password = MiEncritador.EncriptarEnUnSentido(pContrasenia);
+
+            MiCnn.ListaParametros.Add(new SqlParameter("@NombreUsuario", pNombreUsuario));
+            MiCnn.ListaParametros.Add(new SqlParameter("@Contrasenia", Password));
+
+            DataTable respuesta = MiCnn.EjecutarSelect("SPUsuarioValidarLogin");
+
+            if (respuesta != null && respuesta.Rows.Count > 0)
+            {
+                DataRow mifila = respuesta.Rows[0];
+
+                R = Convert.ToInt32(mifila["IDUsuario"]);
+            }
 
             return R;
         }
